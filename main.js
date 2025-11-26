@@ -1,52 +1,50 @@
-// Map keys to audio
+const square = document.querySelector(".square");
+const playBtn = document.getElementById("playBtn");
+const instructions = document.querySelector(".instructions");
+const flash = document.getElementById("flash");
+
 const keyMap = {
-  87: document.getElementById('soundW'), // W
-  65: document.getElementById('soundA'), // A
-  83: document.getElementById('soundS'), // S
-  68: document.getElementById('soundD'), // D
-  70: document.getElementById('soundF'), // F
-  71: document.getElementById('soundG')  // G
+  87: document.getElementById('soundW'),
+  65: document.getElementById('soundA'),
+  83: document.getElementById('soundS'),
+  68: document.getElementById('soundD'),
+  70: document.getElementById('soundF'),
+  71: document.getElementById('soundG')
 };
 
-// Colors for each key
 const colorMap = {
-  87: "#FF4D4D", // red
-  65: "#FFB84D", // orange
-  83: "#FFF94D", // yellow
-  68: "#4DFF4D", // green
-  70: "#4DB8FF", // blue
-  71: "#C04DFF"  // purple
+  87: "#FF4D4D",
+  65: "#FFB84D",
+  83: "#FFF94D",
+  68: "#4DFF4D",
+  70: "#4DB8FF",
+  71: "#C04DFF"
 };
 
+square.addEventListener("animationend", () => {
+  playBtn.classList.add("show");
+});
 
+playBtn.addEventListener("click", () => {
+  square.style.display = "none";
+  instructions.style.display = "block";
+  playBtn.style.display = "none";
+  document.body.style.backgroundColor= "black";
+});
 
-const output = document.getElementById('output');
-const flash = document.getElementById('flash');
-
-// Key press event
 document.onkeydown = function (e) {
   const sound = keyMap[e.which];
   const color = colorMap[e.which];
 
   if (sound) {
-    // Play sound
     sound.currentTime = 0;
     sound.volume = 1.0;
     sound.play();
 
-    // Flash color
-    flashColor(color);
+    flash.style.backgroundColor = color;
+    flash.classList.add("active");
+    setTimeout(() => flash.classList.remove("active"), 200);
 
-console.log(`Key ${e.key} pressed — playing sound.`)
+    console.log(`Key ${e.key.toUpperCase()} pressed — playing sound.`);
   }
 };
-
-// Flash function
-function flashColor(color) {
-  flash.style.backgroundColor = color;
-  flash.classList.add("active");
-  
-  setTimeout(() => {
-    flash.classList.remove("active");
-  }, 200);
-}
