@@ -31,7 +31,7 @@ body {
   
   width: 200px;
   height: 200px;
-  background-color: rgb(87, 44, 196);
+  background-color: rgb(55, 22, 137);
   font-family: "Bangers", system-ui;
   font-weight: 800;
   font-style: italic;
@@ -67,6 +67,10 @@ body {
 
 .instructions{
   display: none;
+  font-family: "Bangers", system-ui;
+  font-weight: 800;
+  font-style: italic;
+  font-size: x-large;
 }
 
 
@@ -98,6 +102,6 @@ body {
 }
 
 .square {
-  background: linear-gradient(135deg, #6a5af9, #8e2de2);
-  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+  background: linear-gradient(to bottom, #5849e1, #231177);
+  filter: drop-shadow(0 0 50px rgba(0,0,0,0.5));
 }
